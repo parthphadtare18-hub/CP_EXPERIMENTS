@@ -1,0 +1,178 @@
+EXP 9.1
+#include <iostream>
+using namespace std;
+
+int stack[100];
+int top = -1;
+
+void push(int x) {
+    if (top == 99) {
+        cout << "Overflow\n";
+        return;
+    }
+    top++;
+    stack[top] = x;
+}
+
+void pop() {
+    if (top == -1) {
+        cout << "Underflow\n";
+        return;
+    }
+    cout << "Popped: " << stack[top] << endl;
+    top--;
+}
+
+void display() {
+    for (int i = top; i >= 0; i--)
+        cout << stack[i] << " ";
+    cout << endl;
+}
+
+int main() {
+    push(10);
+    push(20);
+    push(30);
+
+    display();
+
+    pop();
+    display();
+}
+
+
+EXP 9.2
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int main() {
+    stack<int> s;
+
+    s.push(10);
+    s.push(20);
+    s.push(30);
+
+    while (!s.empty()) {
+        cout << s.top() << " ";
+        s.pop();
+    }
+}
+
+
+EXP 9.3
+#include <iostream>
+#include <stack>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+int main() {
+    Node* head = NULL;
+
+    // create list 1->2->3
+    Node* n1 = new Node{1, NULL};
+    Node* n2 = new Node{2, NULL};
+    Node* n3 = new Node{3, NULL};
+
+    head = n1;
+    n1->next = n2;
+    n2->next = n3;
+
+    stack<int> s;
+
+    Node* temp = head;
+
+    while (temp != NULL) {
+        s.push(temp->data);
+        temp = temp->next;
+    }
+
+    temp = head;
+
+    while (temp != NULL) {
+        temp->data = s.top();
+        s.pop();
+        temp = temp->next;
+    }
+
+    temp = head;
+
+    while (temp != NULL) {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+}
+
+
+EXP 9.4
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int main() {
+    string s;
+    cin >> s;
+
+    stack<char> st;
+
+    for (int i = 0; i < s.length(); i++) {
+        if (s[i] == '(' || s[i] == '{' || s[i] == '[')
+            st.push(s[i]);
+        else {
+            if (st.empty()) {
+                cout << "Not Balanced";
+                return 0;
+            }
+
+            char t = st.top();
+            st.pop();
+
+            if ((s[i] == ')' && t != '(') ||
+                (s[i] == '}' && t != '{') ||
+                (s[i] == ']' && t != '[')) {
+                cout << "Not Balanced";
+                return 0;
+            }
+        }
+    }
+
+    if (st.empty())
+        cout << "Balanced";
+    else
+        cout << "Not Balanced";
+}
+
+
+EXP 9.5
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int main() {
+    string s;
+    cin >> s;
+
+    stack<int> st;
+
+    for (int i = 0; i < s.length(); i++) {
+        if (s[i] >= '0' && s[i] <= '9') {
+            st.push(s[i] - '0');
+        } else {
+            int b = st.top(); st.pop();
+            int a = st.top(); st.pop();
+
+            if (s[i] == '+') st.push(a + b);
+            else if (s[i] == '-') st.push(a - b);
+            else if (s[i] == '*') st.push(a * b);
+            else if (s[i] == '/') st.push(a / b);
+        }
+    }
+
+    cout << st.top();
+}
+
+
