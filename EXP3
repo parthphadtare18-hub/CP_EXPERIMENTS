@@ -1,0 +1,110 @@
+EXP 3.1
+#include <iostream>
+using namespace std;
+
+void print(int m, int n) {
+    if (m > n)
+        return;
+
+    cout << m << " ";
+    print(m + 1, n);
+}
+
+int main() {
+    int m, n;
+    cin >> m >> n;
+
+    print(m, n);
+}
+
+
+EXP 3.2
+#include <iostream>
+using namespace std;
+
+int sum(int n) {
+    if (n == 0)
+        return 0;
+
+    return (n % 10) + sum(n / 10);
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    cout << sum(n);
+}
+
+
+EXP 3.3
+#include <iostream>
+using namespace std;
+
+int power(int n, int d) {
+    if (d == 0)
+        return 1;
+
+    return n * power(n, d - 1);
+}
+
+int main() {
+    int n, d;
+    cin >> n >> d;
+
+    cout << power(n, d);
+}
+
+
+EXP 3.4
+#include <iostream>
+using namespace std;
+
+void permute(string s, int l, int r) {
+    if (l == r) {
+        cout << s << endl;
+        return;
+    }
+
+    for (int i = l; i <= r; i++) {
+        swap(s[l], s[i]);
+        permute(s, l + 1, r);
+        swap(s[l], s[i]);
+    }
+}
+
+int main() {
+    string s;
+    cin >> s;
+
+    permute(s, 0, s.length() - 1);
+}
+
+
+EXP 3.5#include <iostream>
+using namespace std;
+
+int countSubsets(int a[], int n, int sum) {
+    if (sum == 0)
+        return 1;
+    if (n == 0)
+        return 0;
+
+    if (a[n - 1] > sum)
+        return countSubsets(a, n - 1, sum);
+
+    return countSubsets(a, n - 1, sum) +
+           countSubsets(a, n - 1, sum - a[n - 1]);
+}
+
+int main() {
+    int n, sum;
+    cin >> n >> sum;
+
+    int a[100];
+
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+
+    cout << countSubsets(a, n, sum);
+}
