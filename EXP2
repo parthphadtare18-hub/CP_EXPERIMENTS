@@ -1,0 +1,102 @@
+EXP 2.1
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, pos;
+    cin >> n >> pos;
+
+    int res = (n >> pos) & 1;
+
+    if (res == 1)
+        cout << "Set";
+    else
+        cout << "Not Set";
+}
+
+
+EXP 2.2
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    int a[100];
+
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+
+    int max_val = 0;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            int val = a[i] & a[j];
+            if (val > max_val)
+                max_val = val;
+        }
+    }
+
+    cout << max_val;
+}
+
+
+EXP 2.3
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    if (n & 1)
+        cout << "Odd";
+    else
+        cout << "Even";
+}
+
+
+EXP 2.4
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    long long fact = 1;
+
+    for (int i = 1; i <= n; i++)
+        fact = fact * i;
+
+    int count = 0;
+
+    while (fact > 0) {
+        count++;
+        fact = fact / 10;
+    }
+
+    cout << count;
+}
+
+
+EXP 2.5
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    int count = 0;
+
+    while (n > 0) {
+        count++;
+        n = n / 10;
+    }
+
+    cout << count;
+}
+
+
