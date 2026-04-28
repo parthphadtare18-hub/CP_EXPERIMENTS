@@ -1,0 +1,110 @@
+EXP 5.1
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    int a[100], hash[1000] = {0};
+
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+        hash[a[i]]++;
+    }
+
+    for (int i = 0; i < 1000; i++) {
+        if (hash[i] > 0)
+            cout << i << " -> " << hash[i] << endl;
+    }
+}
+
+
+EXP 5.2
+#include <iostream>
+using namespace std;
+
+int main() {
+    int size, n;
+    cin >> size >> n;
+
+    int hash[100];
+
+    for (int i = 0; i < size; i++)
+        hash[i] = -1;
+
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+
+        int idx = x % size;
+
+        while (hash[idx] != -1) {
+            idx = (idx + 1) % size;
+        }
+
+        hash[idx] = x;
+    }
+
+    for (int i = 0; i < size; i++)
+        cout << hash[i] << " ";
+}
+
+
+EXP 5.3
+#include <iostream>
+using namespace std;
+
+int main() {
+    int size, n;
+    cin >> size >> n;
+
+    int hash[100];
+
+    for (int i = 0; i < size; i++)
+        hash[i] = -1;
+
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+
+        int idx = x % size;
+
+        hash[idx] = x;
+    }
+
+    for (int i = 0; i < size; i++)
+        cout << hash[i] << " ";
+}
+
+
+EXP 5.4
+#include <iostream>
+using namespace std;
+
+int main() {
+    int size, n;
+    cin >> size >> n;
+
+    int hash[100];
+
+    for (int i = 0; i < size; i++)
+        hash[i] = -1;
+
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+
+        int idx = x % size;
+
+        while (hash[idx] != -1) {
+            idx = (idx + 1) % size;
+        }
+
+        hash[idx] = x;
+    }
+
+    for (int i = 0; i < size; i++)
+        cout << hash[i] << " ";
+}
+
