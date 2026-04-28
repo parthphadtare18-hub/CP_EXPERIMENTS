@@ -1,0 +1,95 @@
+EXP 1.1
+#include <iostream>
+using namespace std;
+
+int main() {
+    string s;
+    getline(cin, s);
+
+    int count = 0;
+    for (int i = 0; i < s.length(); i++) {
+        if (s[i] == ' ')
+            count++;
+    }
+
+    cout << count + 1;
+}
+
+EXP 1.2
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, m;
+    cin >> n >> m;
+
+    int a[100][100];
+
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < m; j++)
+            cin >> a[i][j];
+
+    for (int j = 0; j < m; j++) {
+        for (int i = 0; i < n; i++) {
+            cout << a[i][j] << " ";
+        }
+        cout << endl;
+
+
+EXP 1.3
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    int a = 0, b = 1, c;
+
+    for (int i = 1; i <= n; i++) {
+        cout << a << " ";
+        c = a + b;
+        a = b;
+        b = c;
+    }
+}
+
+
+EXP 1.4
+#include <iostream>
+using namespace std;
+
+int main() {
+    int m, n;
+    cin >> m >> n;
+
+    int result = 1;
+
+    for (int i = 1; i <= n; i++) {
+        result = result * m;
+    }
+
+    cout << result;
+}
+
+
+EXP 1.5
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    int cnt = 0;
+
+    for (int k = 0; k < n; k++) {
+        for (int p = k; p > 0; p--) {
+            cnt = cnt + 1;
+        }
+    }
+
+    cout << cnt;
+}
+    }
+}
